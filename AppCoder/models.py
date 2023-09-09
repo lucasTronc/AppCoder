@@ -10,17 +10,16 @@ class Cliente(models.Model):
         return f"nombre: {self.nombre} - apellido: {self.apellido} - dni: {self.dni}"
 
 class Producto(models.Model):
-    nombre= models.CharField(max_length=30)
+    nombre= models.CharField(max_length=40)
     numero= models.IntegerField()
     cantidad= models.IntegerField()
 
     def __str__(self):
         return f"nombre: {self.nombre} - numero: {self.numero} - cantidad: {self.cantidad}"
     
-
 class Envio(models.Model):
-    origen= models.CharField(max_length=30)
-    destino= models.CharField(max_length=30)
+    origen= models.CharField(max_length=40)
+    destino= models.CharField(max_length=40)
     numero= models.IntegerField()
     producto= models.IntegerField() 
 

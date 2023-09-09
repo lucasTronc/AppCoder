@@ -1,5 +1,20 @@
 {% extends 'padre.html' %}
 
 {% block contenidoMio %}
-<p>formularioEnvio</p>
+<p>Formulario Envio</p>
+<form action="{% url 'formularioEnvio' %}" method="post">{% csrf_token %}
+    <div class="form-group">
+      <label for="exampleInputEmail1">Origen</label>
+      <input class="form-control" >    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Destino</label>
+        <input class="form-control" >    </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Numero</label>
+        <input class="form-control" >    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Producto</label>
+        <input class="form-control" >    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 {% endblock contenidoMio %}

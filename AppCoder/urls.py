@@ -3,8 +3,8 @@ from .views import *
 
 urlpatterns = [
    
-    path('formularioCliente/', formularioCliente),
-    path('formularioProducto/', formularioProducto),
-    path('formularioEnvio/', formularioEnvio),
-    path('mostrarformulario/', mostrarformulario),
+    path('formularioCliente/', formularioCliente, name="formularioCliente"),
+    path('formularioProducto/', formularioProducto, name="formularioProducto"),
+    path('formularioEnvio/', formularioEnvio, name="formularioEnvio"),
+    path('mostrarformulario/', mostrarformulario, name="mostrarformulario"),
 ]

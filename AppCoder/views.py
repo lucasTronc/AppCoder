@@ -1,15 +1,81 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render, HttpResponse
+from django.http import HttpResponse
+from AppCoder.models import Cliente, Producto, Envio
+from AppCoder.forms import formularioC, formularioE, formularioP
 
-# Create your views here.
 
-def formularioCliente(req):
-    return render(req,"formularioCliente.html")
+def formularioCliente(request):
 
-def formularioProducto(req):
-    return render(req,"formularioProducto.html")
+    if request.method == 'POST':
 
-def formularioEnvio(req):
-    return render(req,"formularioEnvio.html")
+        miFormulario = formularioC(request.POST) #aquí mellega toda la información del html
 
-def mostrarformulario(req):
-    return render(req,"mostrarformulario.html")
+        print(miFormulario)
+
+        if miFormulario.is_valid:   #Si pasó la validación de Django
+
+            informacion = miFormulario.cleaned_data
+
+            cliente = Cliente(nombre=informacion['nombre'], apellido=informacion['apellido'], dni=informacion['dni'] ) 
+
+            cliente.save()
+
+            return render(request, "formularioCorrecto.html")
+
+    else: 
+
+        miFormulario= formularioC() #Formulario vacio para construir el html
+
+        return render(request, "formularioCliente.html", {"miFormulario":miFormulario})
+
+
+def formularioProducto(request):
+
+    if request.method == 'POST':
+
+        miFormulario = formularioP(request.POST) #aquí mellega toda la información del html
+
+        print(miFormulario)
+
+        if miFormulario.is_valid:   #Si pasó la validación de Django
+
+            informacion = miFormulario.cleaned_data
+
+            cliente = Producto(nombre=informacion['nombre'], numero=informacion['numero'], cantidad=informacion['cantidad'] ) 
+
+            cliente.save()
+
+            return render(request, "formularioProducto.html")
+
+    else: 
+
+        miFormulario= formularioP() #Formulario vacio para construir el html
+
+        return render(request, "formularioProducto.html", {"miFormulario":miFormulario})
+
+def formularioEnvio(request):
+
+    if request.method == 'POST':
+
+        miFormulario = formularioE(request.POST) #aquí mellega toda la información del html
+
+        print(miFormulario)
+
+        if miFormulario.is_valid:   #Si pasó la validación de Django
+
+            informacion = miFormulario.cleaned_data
+
+            cliente = Envio(origen=informacion['origen'], destino=informacion['destino'], numero=informacion['numero'], producto=informacion['producto'] ) 
+
+            cliente.save()
+
+            return render(request, "formularioEnvio.html")
+
+    else: 
+
+        miFormulario= formularioE() #Formulario vacio para construir el html
+
+        return render(request, "formularioEnvio.html", {"miFormulario":miFormulario})
+
+def mostrarformulario(request):
+    return render(request,"mostrarformulario.html")

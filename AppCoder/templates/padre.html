@@ -14,15 +14,18 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'AppCoder/static/css/styles.css' %}" rel="stylesheet" />
+        <link href="{%static 'AppCoder/static/css/styles.css' %}" rel="stylesheet" />
+
     </head>
 
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
-                <a class="btn btn-primary" href="#signup">Sign Up</a>
+                <a class="navbar-brand" href="{% url 'formularioCliente' %}">Clientes</a>
+                <a class="navbar-brand" href="{% url 'formularioProducto' %}">Products</a>
+                <a class="navbar-brand" href="{% url 'formularioEnvio' %}">Envios</a>
+                <a class="navbar-brand" href="{% url 'mostrarformulario' %}">Buscar</a>
             </div>
         </nav>
         <!-- Masthead-->
@@ -80,7 +83,7 @@
                             <li class="list-inline-item">⋅</li>
                             <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
                         </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights Reserved.</p>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Planet Express</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
