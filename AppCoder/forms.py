@@ -1,5 +1,6 @@
 from django import forms
 
+
 class formularioC(forms.Form):
 
     nombre = forms.CharField(max_length=40)

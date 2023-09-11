@@ -79,3 +79,11 @@ def formularioEnvio(request):
 
 def mostrarformulario(request):
     return render(request,"mostrarformulario.html")
+
+def buscar(request:HttpResponse):
+    if request.get["nombre"]:
+        nombre=request.get["nombre"]
+        ficha=Cliente.objects.get(nombre=nombre)
+        return render(request," resultadoBusqueda.html", {"nombre":nombre})
+    else:
+        return HttpResponse(f'agrege un nombre')
