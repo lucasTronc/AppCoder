@@ -51,13 +51,13 @@ def formularioProducto(req):
 
             producto.save()
 
-            return render(req, "formularioProducto.html")
+            return render(req,"formularioCorrecto.html")
         
         else: 
 
             miFormulario= formularioC() #Formulario vacio para construir el html
 
-            return render(req, "formularioCliente.html", {"miFormulario":miFormulario})
+            return render(req, "formularioProducto.html", {"miFormulario":miFormulario})
 
     else: 
 
@@ -81,13 +81,13 @@ def formularioEnvio(req):
 
             envio.save()
 
-            return render(req, "formularioEnvio.html")
+            return render(req, "formularioCorrecto.html")
 
         else: 
 
             miFormulario= formularioC() #Formulario vacio para construir el html
 
-            return render(req, "formularioCliente.html", {"miFormulario":miFormulario})
+            return render(req, "formularioEnvio.html", {"miFormulario":miFormulario})
 
     else: 
 
