@@ -1,20 +1,24 @@
 {% extends 'padre.html' %}
 
 {% block contenidoMio %}
-<p>Formulario Envio</p>
+<p class="FuturaFont">Formulario Envio</p>
 <form action="{% url 'formularioEnvio' %}" method="post">{% csrf_token %}
-    <div class="form-group">
-      <h2 for="exampleInputEmail1">Origen</h2>
-      <input class="form-control" >    </div>
-    <div class="form-group">
-        <h2 for="exampleInputEmail1">Destino</h2>
-        <input class="form-control" >    </div>
-      <div class="form-group">
-        <h2 for="exampleInputEmail1">Numero</h2>
-        <input class="form-control" >    </div>
-    <div class="form-group">
-        <h2 for="exampleInputEmail1">Producto</h2>
-        <input class="form-control" >    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="form-group FuturaFont">
+      <h2>Origen</h2>
+      <input class="origen" >    
+    </div>
+    <div class="form-group FuturaFont">
+        <h2>Destino</h2>
+        <input class="destino" >    
+      </div>
+      <div class="form-group FuturaFont">
+        <h2>Numero</h2>
+        <input class="numero" >    
+      </div>
+    <div class="form-group FuturaFont">
+        <h2>Producto</h2>
+        <input class="producto" >    
+      </div>
+    <button type="submit" class="btn btn-primary FuturaFont">Submit</button>
   </form>
 {% endblock contenidoMio %}

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Landing Page - Start Bootstrap Theme</title>
+        <title>Planet Express Package Delivery</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -15,21 +15,22 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{%static 'css/styles.css' %}" rel="stylesheet" />
-
+        <link href="{% static 'css/misestilos.css' %}" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/futurama" rel="stylesheet">        
     </head>
 
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-light bg-light static-top">
-            <div class="container">
-                <a class="navbar-brand" href="{% url 'formularioCliente' %}">Clientes</a>
-                <a class="navbar-brand" href="{% url 'formularioProducto' %}">Products</a>
-                <a class="navbar-brand" href="{% url 'formularioEnvio' %}">Envios</a>
-                <a class="navbar-brand" href="{% url 'mostrarformulario' %}">Buscar</a>
+        <nav class="navbar fondo1 static-top ">
+            <div class="container fondo1 ">
+                <a class="navbar-brand FuturaFont" href="{% url 'formularioCliente' %}">Clientes</a>
+                <a class="navbar-brand FuturaFont" href="{% url 'formularioProducto' %}">Products</a>
+                <a class="navbar-brand FuturaFont" href="{% url 'formularioEnvio' %}">Envios</a>
+                <a class="navbar-brand FuturaFont" href="{% url 'mostrarformulario' %}">Buscar</a>
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead">
+        <header class="masthea fondo">
             <div class="container position-relative">
                 <div class="row justify-content-center">
                     <div class="col-xl-6">
@@ -44,31 +45,31 @@
             </div>
         </header>
         <!-- Footer-->
-        <footer class="footer bg-light">
+        <footer class="footer fondo2">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                        <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">About</a></li>
+                        <ul class="list-inline mb-2 ">
+                            <li class="list-inline-item "><a href="#!" class="letras FuturaFont ">About</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contact</a></li>
+                            <li class="list-inline-item"><a href="#!" class="letras FuturaFont">Contact</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+                            <li class="list-inline-item"><a href="#!" class="letras FuturaFont">Terms of Use</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+                            <li class="list-inline-item"><a href="#!" class="letras FuturaFont">Privacy Policy</a></li>
                         </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Planet Express</p>
+                        <p class=" letras FuturaFont ">&copy; Planet Express</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                                <a href="#!"><i class="bi-facebook fs-3 letras1" ></i></a>
                             </li>
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                                <a href="#!"><i class="bi-twitter fs-3 letras1"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                                <a href="#!"><i class="bi-instagram fs-3 letras1"></i></a>
                             </li>
                         </ul>
                     </div>

@@ -1,14 +1,14 @@
 {% extends 'padre.html' %}
 
 {% block contenidoMio %}
-<p>Mostrar Formulario</p>
+<p class="FuturaFont">Mostrar Formulario</p>
 <form action="{% url 'buscar' %}" method="get">
-    <div class="form-group">
+    <div class="form-group FuturaFont">
       <h2>Nombre</h2>
       <h5>Busca en la tabla cliente</h5>
       <input class="nombre" >    
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary FuturaFont">Submit</button>
 </form>
 
 {% endblock contenidoMio %}
