@@ -1,18 +1,18 @@
-from django.shortcuts import redirect, render, HttpResponse
+from django.shortcuts import render, HttpResponse
 from django.http import HttpResponse
 from AppCoder.models import Cliente, Producto, Envio
 from AppCoder.forms import formularioC, formularioE, formularioP
 
 
-def formularioCliente(request):
+def formularioCliente(req):
 
-    if request.method == 'POST':
+    if req.method == 'POST':
 
-        miFormulario = formularioC(request.POST) #aquí mellega toda la información del html
+        miFormulario = formularioC(req.POST) #aquí mellega toda la información del html
 
         print(miFormulario)
 
-        if miFormulario.is_valid:   #Si pasó la validación de Django
+        if miFormulario.is_valid():   #Si pasó la validación de Django
 
             informacion = miFormulario.cleaned_data
 
@@ -20,70 +20,89 @@ def formularioCliente(request):
 
             cliente.save()
 
-            return render(request, "formularioCorrecto.html")
+            return render(req, "formularioCorrecto.html")
+
+        else: 
+
+            miFormulario= formularioC() #Formulario vacio para construir el html
+
+            return render(req, "formularioCliente.html", {"miFormulario":miFormulario})
 
     else: 
 
         miFormulario= formularioC() #Formulario vacio para construir el html
 
-        return render(request, "formularioCliente.html", {"miFormulario":miFormulario})
+        return render(req, "formularioCliente.html", {"miFormulario":miFormulario})
 
 
-def formularioProducto(request):
+def formularioProducto(req):
 
-    if request.method == 'POST':
+    if req.method == 'POST':
 
-        miFormulario = formularioP(request.POST) #aquí mellega toda la información del html
+        miFormulario = formularioP(req.POST) #aquí mellega toda la información del html
 
         print(miFormulario)
 
-        if miFormulario.is_valid:   #Si pasó la validación de Django
+        if miFormulario.is_valid():   #Si pasó la validación de Django
 
             informacion = miFormulario.cleaned_data
 
-            cliente = Producto(nombre=informacion['nombre'], numero=informacion['numero'], cantidad=informacion['cantidad'] ) 
+            producto = Producto(nombre=informacion['nombre'], numero=informacion['numero'], cantidad=informacion['cantidad'] ) 
 
-            cliente.save()
+            producto.save()
 
-            return render(request, "formularioProducto.html")
+            return render(req, "formularioProducto.html")
+        
+        else: 
+
+            miFormulario= formularioC() #Formulario vacio para construir el html
+
+            return render(req, "formularioCliente.html", {"miFormulario":miFormulario})
 
     else: 
 
         miFormulario= formularioP() #Formulario vacio para construir el html
 
-        return render(request, "formularioProducto.html", {"miFormulario":miFormulario})
+        return render(req, "formularioProducto.html", {"miFormulario":miFormulario})
 
-def formularioEnvio(request):
+def formularioEnvio(req):
 
-    if request.method == 'POST':
+    if req.method == 'POST':
 
-        miFormulario = formularioE(request.POST) #aquí mellega toda la información del html
+        miFormulario = formularioE(req.POST) #aquí mellega toda la información del html
 
         print(miFormulario)
 
-        if miFormulario.is_valid:   #Si pasó la validación de Django
+        if miFormulario.is_valid():   #Si pasó la validación de Django
 
             informacion = miFormulario.cleaned_data
 
-            cliente = Envio(origen=informacion['origen'], destino=informacion['destino'], numero=informacion['numero'], producto=informacion['producto'] ) 
+            envio = Envio(origen=informacion['origen'], destino=informacion['destino'], numero=informacion['numero'], producto=informacion['producto'] ) 
 
-            cliente.save()
+            envio.save()
 
-            return render(request, "formularioEnvio.html")
+            return render(req, "formularioEnvio.html")
+
+        else: 
+
+            miFormulario= formularioC() #Formulario vacio para construir el html
+
+            return render(req, "formularioCliente.html", {"miFormulario":miFormulario})
 
     else: 
 
         miFormulario= formularioE() #Formulario vacio para construir el html
 
-        return render(request, "formularioEnvio.html", {"miFormulario":miFormulario})
+        return render(req, "formularioEnvio.html", {"miFormulario": miFormulario})
 
-def mostrarformulario(request):
-    return render(request,"mostrarformulario.html")
+def mostrarformulario(req):
+    return render(req,"mostrarformulario.html")
 
-def buscar(request:HttpResponse):
-    if request.get["nombre"]:
-        nombre=request.get["nombre"]
+def buscar(req:HttpResponse):
+
+    nombre=req.GET.get("nombre")
+    if nombre:
         ficha=Cliente.objects.filter(nombre__icontains=nombre)
-        return render(request," resultadoBusqueda.html", {"ficha":ficha})
+        return render(req," resultadoBusqueda.html", {"ficha":ficha})
     else:
         return HttpResponse(f'agrege un nombre')

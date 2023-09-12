@@ -4,16 +4,16 @@
 <p>Formulario Envio</p>
 <form action="{% url 'formularioEnvio' %}" method="post">{% csrf_token %}
     <div class="form-group">
-      <label for="exampleInputEmail1">Origen</label>
+      <h2 for="exampleInputEmail1">Origen</h2>
       <input class="form-control" >    </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Destino</label>
+        <h2 for="exampleInputEmail1">Destino</h2>
         <input class="form-control" >    </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Numero</label>
+        <h2 for="exampleInputEmail1">Numero</h2>
         <input class="form-control" >    </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Producto</label>
+        <h2 for="exampleInputEmail1">Producto</h2>
         <input class="form-control" >    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
