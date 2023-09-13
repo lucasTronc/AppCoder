@@ -5,19 +5,19 @@
 <form action="{% url 'formularioEnvio' %}" method="post">{% csrf_token %}
     <div class="form-group FuturaFont">
       <h2>Origen</h2>
-      <input class="origen" >    
+      <input name="origen" type="text" >    
     </div>
     <div class="form-group FuturaFont">
         <h2>Destino</h2>
-        <input class="destino" >    
+        <input name="destino" type="text" >    
       </div>
       <div class="form-group FuturaFont">
         <h2>Numero</h2>
-        <input class="numero" >    
+        <input name="numero" type="number" >    
       </div>
     <div class="form-group FuturaFont">
         <h2>Producto</h2>
-        <input class="producto" >    
+        <input name="producto" type="number" >    
       </div>
     <button type="submit" class="btn btn-primary FuturaFont">Submit</button>
   </form>

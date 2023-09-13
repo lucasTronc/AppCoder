@@ -5,15 +5,15 @@
 <form action="{% url 'formularioProducto' %}" method="post">{% csrf_token %}
     <div class="form-group FuturaFont">
         <h2>Nombre</h2>
-        <input class="nombre" >
+        <input name="nombre" type="text" >
     </div>
     <div class="form-group FuturaFont">
         <h2>Numero</h2>
-        <input class="numero" >    
+        <input name="numero" type="number" >    
       </div>
       <div class="form-group FuturaFont">
         <h2>Cantidad</h2>
-        <input class="cantidad" >    
+        <input name="cantidad" type="number">    
       </div>
     <button type="submit" class="btn btn-primary FuturaFont">Submit</button>
   </form>

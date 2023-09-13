@@ -69,8 +69,8 @@ def formularioEnvio(req):
 
             envio.save()
 
-            #return render(req, "formularioCorrecto.html")
-            return render(req, "formularioEnvio.html", {"miFormulario": miFormulario})
+            return render(req, "formularioCorrecto.html")
+
 
     else: 
 
