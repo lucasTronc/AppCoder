@@ -22,12 +22,6 @@ def formularioCliente(req):
 
             return render(req, "formularioCorrecto.html")
 
-        else: 
-
-            miFormulario= formularioC() #Formulario vacio para construir el html
-
-            return render(req, "formularioCliente.html", {"miFormulario":miFormulario})
-
     else: 
 
         miFormulario= formularioC() #Formulario vacio para construir el html
@@ -52,12 +46,6 @@ def formularioProducto(req):
             producto.save()
 
             return render(req,"formularioCorrecto.html")
-        
-        else: 
-
-            miFormulario= formularioC() #Formulario vacio para construir el html
-
-            return render(req, "formularioProducto.html", {"miFormulario":miFormulario})
 
     else: 
 
@@ -77,17 +65,12 @@ def formularioEnvio(req):
 
             informacion = miFormulario.cleaned_data
 
-            envio = Envio(origen=informacion['origen'], destino=informacion['destino'], numero=informacion['numero'], producto=informacion['producto'] ) 
+            envio = Envio(origen=informacion['origen'], destino=informacion['destino'], numero=informacion['numero'], producto=informacion['producto']) 
 
             envio.save()
 
-            return render(req, "formularioCorrecto.html")
-
-        else: 
-
-            miFormulario= formularioC() #Formulario vacio para construir el html
-
-            return render(req, "formularioEnvio.html", {"miFormulario":miFormulario})
+            #return render(req, "formularioCorrecto.html")
+            return render(req, "formularioEnvio.html", {"miFormulario": miFormulario})
 
     else: 
 
