@@ -86,6 +86,6 @@ def buscar(req:HttpResponse):
     nombre=req.GET.get("nombre")
     if nombre:
         ficha=Cliente.objects.filter(nombre__icontains=nombre)
-        return render(req,"resultadoB.html", {"ficha":ficha})
+        return render(req,"resultadoBusqueda.html", {"ficha":ficha})
     else:
-        return HttpResponse(f'agrege un nombre')
+        return render(req,"resultadoErroneo.html")
