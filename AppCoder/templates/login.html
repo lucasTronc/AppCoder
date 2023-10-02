@@ -1,0 +1,10 @@
+{% extends 'padre.html' %}
+
+{% block contenidoMio %}
+    <form action="{% url 'login' %}" method="post">{% csrf_token %}
+
+        {{miFormulario.as_p}}
+
+        <button type="submit"> Ingresar </button>
+    </form>
+{% endblock contenidoMio %}

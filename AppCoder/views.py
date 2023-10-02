@@ -1,7 +1,18 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponse
+#importacion formularios y modelos (tablas BD)
 from AppCoder.models import Cliente, Producto, Envio
 from AppCoder.forms import formularioC, formularioE, formularioP
+#importaciones para login
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+
+
+
+
+def inicio(req:HttpResponse):
+    return render(req,"inicio.html")
 
 
 def formularioCliente(req):
@@ -20,8 +31,9 @@ def formularioCliente(req):
 
             cliente.save()
 
-            return render(req, "formularioCorrecto.html")
+            clientes=Cliente.objects.all() 
 
+            return render(req,"listarClientes.html",{"clientes":clientes})
     else: 
 
         miFormulario= formularioC() #Formulario vacio para construir el html
@@ -45,13 +57,16 @@ def formularioProducto(req):
 
             producto.save()
 
-            return render(req,"formularioCorrecto.html")
+            productos=Producto.objects.all() 
+
+            return render(req,"listarProductos.html",{"productos":productos})
 
     else: 
 
         miFormulario= formularioP() #Formulario vacio para construir el html
 
         return render(req, "formularioProducto.html", {"miFormulario":miFormulario})
+
 
 def formularioEnvio(req):
 
@@ -69,7 +84,9 @@ def formularioEnvio(req):
 
             envio.save()
 
-            return render(req, "formularioCorrecto.html")
+            envios=Envio.objects.all() 
+
+            return render(req,"listarEnvios.html",{"envios":envios})
 
 
     else: 
@@ -78,14 +95,67 @@ def formularioEnvio(req):
 
         return render(req, "formularioEnvio.html", {"miFormulario": miFormulario})
 
+
 def mostrarformulario(req):
     return render(req,"mostrarformulario.html")
 
-def buscar(req:HttpResponse):
 
+def buscar(req:HttpResponse):
     nombre=req.GET.get("nombre")
     if nombre:
         ficha=Cliente.objects.filter(nombre__icontains=nombre)
         return render(req,"resultadoBusqueda.html", {"ficha":ficha})
     else:
         return render(req,"resultadoErroneo.html")
+
+
+def about(req:HttpResponse):
+        return render(req,"about.html")
+
+
+def listarProductos(req):
+    productos=Producto.objects.all() 
+    return render(req,"listarProductos.html",{"productos":productos})
+
+
+def loginView(req):
+
+    if req.method == 'POST':
+
+        miFormulario = AuthenticationForm(req, data=req.POST)
+
+        if miFormulario.is_valid():
+
+            data = miFormulario.cleaned_data
+            usuario = data["username"]
+            psw = data["password"]
+
+            user = authenticate(username=usuario, password=psw)
+            if user:
+                login(req, user)
+                return render(req, "inicio.html", {"mensaje": f"Bienvenido {usuario}!"})
+            
+        return render(req, "inicio.html", {"mensaje": f"Datos incorrectos"})
+    else:
+        miFormulario = AuthenticationForm()
+        return render(req, "login.html", {"miFormulario": miFormulario})
+
+
+def register(req):
+
+    if req.method == 'POST':
+
+        miFormulario = UserCreationForm(req.POST)
+
+        if miFormulario.is_valid():
+
+            data = miFormulario.cleaned_data
+            usuario = data["username"]
+            miFormulario.save()
+            return render(req, "inicio.html", {"mensaje": f"Usuario {usuario} creado con éxito!"})
+
+        return render(req, "inicio.html", {"mensaje": f"Formulario invalido"})
+            
+    else:
+        miFormulario = UserCreationForm()
+        return render(req, "registro.html", {"miFormulario": miFormulario})

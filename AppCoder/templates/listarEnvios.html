@@ -1,0 +1,12 @@
+{% extends 'padre.html' %}
+
+{% block contenidoMio %}
+<p class="FuturaFont">Mostrar Todos los Envios</p>
+<ul>
+    {% for envios in envio}
+    <li>{{envios}}</li>
+    {% endfor}
+
+</ul>
+
+{% endblock contenidoMio %}

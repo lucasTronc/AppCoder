@@ -1,0 +1,12 @@
+{% extends 'padre.html' %}
+
+{% block contenidoMio %}
+<p class="FuturaFont">Mostrar Todos los CLientes</p>
+<ul>
+    {% for clientes in cliente}
+    <li>{{clientes}}</li>
+    {% endfor}
+
+</ul>
+
+{% endblock contenidoMio %}
