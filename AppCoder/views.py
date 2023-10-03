@@ -11,9 +11,14 @@ from django.contrib.auth.models import User
 
 
 
-def inicio(req:HttpResponse):
-    return render(req,"inicio.html")
+def inicio(req):
 
+    try:
+        avatar = Avatar.objects.get(user=req.user.id)
+        return render(req, "inicio.html", {"url_avatar": avatar.imagen.url})
+    except:
+        return render(req, "inicio.html")
+        
 
 def formularioCliente(req):
 

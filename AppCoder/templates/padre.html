@@ -36,7 +36,7 @@
 
                 {% if user.is_authenticated %}
                 {% if url_avatar %}
-                    <img src="{{url_avatar}}" height="30px" alt="avatar">            
+                    <img src="{{url_avatar}}" height="10px" alt="avatar">            
                 {% endif %}
                     <p>Bienvenido {{user.username}}</p>
                     <a class="btn btn-primary FuturaFont fondo2" href="{% url 'logout' %}">Logout</a>
