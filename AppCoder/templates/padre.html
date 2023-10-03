@@ -30,11 +30,14 @@
                 <a class="navbar-brand FuturaFont" href="{% url 'formularioProducto' %}">Productos</a>
                 <a class="navbar-brand FuturaFont" href="{% url 'formularioEnvio' %}">Envios</a>
                 <a class="navbar-brand FuturaFont" href="{% url 'mostrarformulario' %}">Buscar</a>
-                <a class="navbar-brand FuturaFont" href="{% url 'about' %}">About</a>
                 <a class="navbar-brand FuturaFont" href="{% url 'listarProductos' %}">Listar Productos</a>
                 <a class="navbar-brand FuturaFont" href="{% url 'registro' %}">Registrar</a>
+                <a class="navbar-brand FuturaFont" href="{% url 'editarPerfil' %}">Editar Perfil</a>
 
                 {% if user.is_authenticated %}
+                {% if url_avatar %}
+                    <img src="{{url_avatar}}" height="30px" alt="avatar">            
+                {% endif %}
                     <p>Bienvenido {{user.username}}</p>
                     <a class="btn btn-primary FuturaFont fondo2" href="{% url 'logout' %}">Logout</a>
                 {% else %}
@@ -63,13 +66,13 @@
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2 ">
-                            <li class="list-inline-item "><a href="#!" class="letras FuturaFont ">About</a></li>
+                            <li class="list-inline-item "><a href="{% url 'about' %}" class="letras FuturaFont ">About</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!" class="letras FuturaFont">Contact</a></li>
+                            <li class="list-inline-item"><a href="{% url 'contactTermPrivacy' %}" class="letras FuturaFont">Contact</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!" class="letras FuturaFont">Terms of Use</a></li>
+                            <li class="list-inline-item"><a href="{% url 'contactTermPrivacy' %}" class="letras FuturaFont">Terms of Use</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!" class="letras FuturaFont">Privacy Policy</a></li>
+                            <li class="list-inline-item"><a href="{% url 'contactTermPrivacy' %}" class="letras FuturaFont">Privacy Policy</a></li>
                         </ul>
                         <p class=" letras FuturaFont ">&copy; Planet Express</p>
                     </div>

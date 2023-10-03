@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponse
 #importacion formularios y modelos (tablas BD)
-from AppCoder.models import Cliente, Producto, Envio
+from AppCoder.models import Cliente, Producto, Envio, Avatar
 from AppCoder.forms import formularioC, formularioE, formularioP
 #importaciones para login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
@@ -96,6 +96,10 @@ def formularioEnvio(req):
         return render(req, "formularioEnvio.html", {"miFormulario": miFormulario})
 
 
+def contactTermPrivacy(req:HttpResponse):
+        return render(req,"contactTermPrivacy.html")
+
+
 def mostrarformulario(req):
     return render(req,"mostrarformulario.html")
 
@@ -159,3 +163,28 @@ def register(req):
     else:
         miFormulario = UserCreationForm()
         return render(req, "registro.html", {"miFormulario": miFormulario})
+
+
+def editarPerfil(req):
+
+    usuario = req.user
+    if req.method == 'POST':
+
+        miFormulario = UserChangeForm(req.POST, instance=req.user)
+
+        if miFormulario.is_valid():
+            
+            data = miFormulario.cleaned_data
+            usuario.first_name = data["first_name"]
+            usuario.last_name = data["last_name"]
+            usuario.email = data["email"]
+            usuario.set_password(data["password1"])
+            usuario.save()
+
+            return render(req, "inicio.html", {"mensaje": "Datos actualizados con éxito!"})
+        else:
+            return render(req, "editarPerfil.html", {"miFormulario": miFormulario})
+
+    else:
+        miFormulario = UserChangeForm(instance=usuario)
+        return render(req, "editarPerfil.html", {"miFormulario": miFormulario})

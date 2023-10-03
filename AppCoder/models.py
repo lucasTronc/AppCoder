@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class Cliente(models.Model):
 
@@ -9,6 +11,7 @@ class Cliente(models.Model):
     def __str__(self):
         return f"nombre: {self.nombre} - apellido: {self.apellido} - dni: {self.dni}"
 
+
 class Producto(models.Model):
     nombre= models.CharField(max_length=40)
     numero= models.IntegerField()
@@ -17,6 +20,7 @@ class Producto(models.Model):
     def __str__(self):
         return f"nombre: {self.nombre} - numero: {self.numero} - cantidad: {self.cantidad}"
     
+
 class Envio(models.Model):
     origen= models.CharField(max_length=40)
     destino= models.CharField(max_length=40)
@@ -25,3 +29,9 @@ class Envio(models.Model):
 
     def __str__(self):
         return f"origen: {self.origen} - destino: {self.destino} - numero: {self.numero} - producto: {self.producto}"
+
+
+class Avatar(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to='avatar', blank=True, null=True)
