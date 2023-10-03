@@ -32,8 +32,14 @@
                 <a class="navbar-brand FuturaFont" href="{% url 'mostrarformulario' %}">Buscar</a>
                 <a class="navbar-brand FuturaFont" href="{% url 'about' %}">About</a>
                 <a class="navbar-brand FuturaFont" href="{% url 'listarProductos' %}">Listar Productos</a>
-                <a class="navbar-brand FuturaFont" href="{% url 'login' %}">Login</a>
                 <a class="navbar-brand FuturaFont" href="{% url 'registro' %}">Registrar</a>
+
+                {% if user.is_authenticated %}
+                    <p>Bienvenido {{user.username}}</p>
+                    <a class="btn btn-primary FuturaFont fondo2" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a class="btn btn-primary FuturaFont fondo2" href="{% url 'login' %}">Login</a>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->

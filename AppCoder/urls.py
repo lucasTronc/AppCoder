@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import *
+#importo funcionalidad de logout
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('inicio/',inicio, name="inicio"),
@@ -12,4 +14,5 @@ urlpatterns = [
     path('listarProductos/', listarProductos, name="listarProductos"),
     path('login/', loginView, name="login"),
     path('register/', register, name="registro"),
+    path('logout/', LogoutView.as_view(template_name="logout.html"), name="logout"),
 ]
