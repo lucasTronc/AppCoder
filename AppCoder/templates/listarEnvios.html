@@ -1,12 +1,14 @@
-{% extends 'padre.html' %}
+{% extends 'padre.html' %} 
 
 {% block contenidoMio %}
-<p class="FuturaFont">Mostrar Todos los Envios</p>
-<ul>
-    {% for envios in envio}
-    <li>{{envios}}</li>
-    {% endfor}
 
+<ul>
+  {% for envio in envios %}
+    <li>
+        <a href="{% url 'detalleEnvios' envio.id%}"> {{ envio.numero }} </a>
+    </li>
+ 
+  {% endfor %}
 </ul>
 
 {% endblock contenidoMio %}

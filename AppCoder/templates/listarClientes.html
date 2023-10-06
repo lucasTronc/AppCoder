@@ -1,12 +1,15 @@
-{% extends 'padre.html' %}
+{% extends 'padre.html' %} 
+
 
 {% block contenidoMio %}
-<p class="FuturaFont">Mostrar Todos los CLientes</p>
-<ul>
-    {% for clientes in cliente}
-    <li>{{clientes}}</li>
-    {% endfor}
 
+<ul>
+  {% for cliente in clientes %}
+    <li>
+        <a href="{% url 'detalleClientes' cliente.id%}"> {{ cliente.nombre }} </a>
+    </li>
+ 
+  {% endfor %}
 </ul>
 
 {% endblock contenidoMio %}

@@ -1,12 +1,15 @@
-{% extends 'padre.html' %}
+{% extends 'padre.html' %} 
+
 
 {% block contenidoMio %}
-<p class="FuturaFont">Mostrar Todos los Productos</p>
-<ul>
-    {% for productos in producto}
-    <li>{{productos}}</li>
-    {% endfor}
 
+<ul>
+  {% for producto in productos %}
+    <li>
+        <a href="{% url 'detalleProductos' producto.id%}"> {{ producto.nombre }} </a>
+    </li>
+ 
+  {% endfor %}
 </ul>
 
 {% endblock contenidoMio %}
