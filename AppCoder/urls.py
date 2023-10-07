@@ -26,5 +26,8 @@ urlpatterns = [
     path('eliminarEnvios/<pk>/', EliminarEnvios.as_view(), name="eliminarEnvios"),
     path('eliminarProductos/<pk>/', EliminarProductos.as_view(), name="eliminarProductos"),
     path('eliminarClientes/<pk>/', EliminarClientes.as_view(), name="eliminarClientes"),
+    path('actualizarEnvios/<pk>/', ActualizarEnvios.as_view(), name="actualizarEnvios"),
+    path('actualizarProductos/<pk>/', ActualizarProductos.as_view(), name="actualizarProductos"),
+    path('actualizarClientes/<pk>/', ActualizarClientes.as_view(), name="actualizarClientes"),
  
 ]

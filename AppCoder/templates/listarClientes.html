@@ -10,6 +10,9 @@
         <button>
           <a href="{% url 'eliminarClientes' cliente.id %}">Eliminar</a>
         </button>
+        <button>
+          <a href="{% url 'actualizarClientes' cliente.id %}">Editar</a>
+        </button>
     </li>
  
   {% endfor %}

@@ -230,9 +230,16 @@ class DetalleClientes(DetailView):
 class EliminarClientes(DeleteView):
     model = Cliente
     template_name = "eliminarClientes.html"
-    success_url = '/AppCoder/inicio/'
+    success_url = '/AppCoder/listaClientes/'
     context_object_name = "clientes"
 
+
+class ActualizarClientes(UpdateView):
+    model = Cliente
+    template_name = "actualizarClientes.html"
+    fields = ('nombre', 'apellido', 'dni')
+    success_url = '/AppCoder/listaClientes/'
+    context_object_name = "clientes"
 
 
 class ListarProductos(ListView):
@@ -250,7 +257,15 @@ class DetalleProductos(DetailView):
 class EliminarProductos(DeleteView):
     model = Producto
     template_name = "eliminarProductos.html"
-    success_url = '/AppCoder/inicio/'
+    success_url = '/AppCoder/listarProductos/'
+    context_object_name = "productos"
+
+
+class ActualizarProductos(UpdateView):
+    model = Producto
+    template_name = "actualizarProductos.html"
+    fields = ('nombre', 'numero', 'cantidad')
+    success_url = '/AppCoder/listarProductos/'
     context_object_name = "productos"
 
 
@@ -268,6 +283,12 @@ class DetalleEnvios(DetailView):
 class EliminarEnvios(DeleteView):
     model = Envio
     template_name = "eliminarEnvios.html"
-    success_url = '/AppCoder/inicio/'
+    success_url = '/AppCoder/listarEnvios/'
     context_object_name = "envios"
 
+class ActualizarEnvios(UpdateView):
+    model = Envio
+    template_name = "actualizarEnvios.html"
+    fields = ('destino', 'origen', 'numero', 'producto')
+    success_url = '/AppCoder/listarEnvios/'
+    context_object_name = "envios"

@@ -1,6 +1,5 @@
 {% extends 'padre.html' %} 
 
-
 {% block contenidoMio %}
 
 <ul>
@@ -9,6 +8,9 @@
         <a href="{% url 'detalleProductos' producto.id%}"> {{ producto.nombre }} </a>
         <button>
           <a href="{% url 'eliminarProductos' producto.id %}">Eliminar</a>
+        </button>
+        <button>
+          <a href="{% url 'actualizarProductos' producto.id %}">Editar</a>
         </button>
     </li>
  
