@@ -227,6 +227,14 @@ class DetalleClientes(DetailView):
     context_object_name = "clientes"
 
 
+class EliminarClientes(DeleteView):
+    model = Cliente
+    template_name = "eliminarClientes.html"
+    success_url = '/AppCoder/inicio/'
+    context_object_name = "clientes"
+
+
+
 class ListarProductos(ListView):
     model = Producto
     template_name = "listarProductos.html"
@@ -236,6 +244,13 @@ class ListarProductos(ListView):
 class DetalleProductos(DetailView):
     model = Producto
     template_name = "detalleProductos.html"
+    context_object_name = "productos"
+
+
+class EliminarProductos(DeleteView):
+    model = Producto
+    template_name = "eliminarProductos.html"
+    success_url = '/AppCoder/inicio/'
     context_object_name = "productos"
 
 
@@ -249,3 +264,10 @@ class DetalleEnvios(DetailView):
     model = Envio
     template_name = "detalleEnvios.html"
     context_object_name = "envios"
+
+class EliminarEnvios(DeleteView):
+    model = Envio
+    template_name = "eliminarEnvios.html"
+    success_url = '/AppCoder/inicio/'
+    context_object_name = "envios"
+

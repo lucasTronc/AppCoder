@@ -7,6 +7,9 @@
   {% for cliente in clientes %}
     <li>
         <a href="{% url 'detalleClientes' cliente.id%}"> {{ cliente.nombre }} </a>
+        <button>
+          <a href="{% url 'eliminarClientes' cliente.id %}">Eliminar</a>
+        </button>
     </li>
  
   {% endfor %}

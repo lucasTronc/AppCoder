@@ -6,6 +6,9 @@
   {% for envio in envios %}
     <li>
         <a href="{% url 'detalleEnvios' envio.id%}"> {{ envio.numero }} </a>
+        <button>
+          <a href="{% url 'eliminarEnvios' envio.id %}">Eliminar</a>
+        </button>
     </li>
  
   {% endfor %}

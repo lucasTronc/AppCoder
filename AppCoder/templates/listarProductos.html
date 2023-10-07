@@ -7,6 +7,9 @@
   {% for producto in productos %}
     <li>
         <a href="{% url 'detalleProductos' producto.id%}"> {{ producto.nombre }} </a>
+        <button>
+          <a href="{% url 'eliminarProductos' producto.id %}">Eliminar</a>
+        </button>
     </li>
  
   {% endfor %}
